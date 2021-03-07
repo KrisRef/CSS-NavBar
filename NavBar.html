@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>CSS-only Navigation Menu</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="branding">
+                    <h2><a href="#" class="branding-logo">CSS-Only Nagivation Menu</a></h2>
+                </div>
+                <input type="checkbox" class="input-hamburger" id="input-hamburger" hidden />
+                <label for="input-hamburger" class="hamburger"><span class="midline"></span></label>
+                 <ul class="menu">
+                    <li><a href="#" class="menu-link">Home</a></li>
+                    <li class="has-dropdown">
+                        <input type="checkbox" id="dropdown1" hidden />
+                        <label for="dropdown1" class="mobile">Services
+                            <span class="arrow"></span></label>
+                        <a href="#" id="mobile-menu1">Services
+                            <span class="arrow"></span>
+                        </a>
+                        <!--Submenu-->
+                        <ul class="submenu">
+                            <li><a href="#" class="menu-link">Web Design</a></li>
+                            <li><a href="#" class="menu-link">Web Development</a></li>
+                            <li class="has-dropdown">
+                                <input type="checkbox" id="dropdown2" hidden />
+                                <label for="dropdown2" class="submobile">Full Stack Development
+                                    <span class="arrow"></span></label>
+                                <a href="#" id="mobile-menu2">Full Stack Development
+                                    <span class="arrow"></span>
+                                </a>
+                                <!--2nd Submenu-->
+                                <ul class="submenu">
+                                    <li><a href="#" class="menu-link">Wordpress Development</a></li>
+                                    <li><a href="#" class="menu-link">Front End Development</a></li>
+                                    <li class="has-dropdown">
+                                        <input type="checkbox" id="dropdown3" hidden />
+                                        <label for="dropdown3" class="submobile">MEAN Stack Development
+                                            <span class="arrow"></span></label>
+                                        <a href="#" id="mobile-menu3">MEAN Stack Development
+                                            <span class="arrow"></span>
+                                        </a>
+                                        <!--3rd Submenu-->
+                                        <ul class="submenu">
+                                            <li><a href="#" class="menu-link">MongoDb</a></li>
+                                            <li><a href="#" class="menu-link">ExpressJS</a></li>
+                                            <li><a href="#" class="menu-link">AngularJS</a></li>
+                                            <li><a href="#" class="menu-link">NodeJS</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#" class="menu-link">Back End Development</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu-link">UI/UX Design</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="menu-link">Portfolio</a></li>
+                    <li><a href="#" class="menu-link">Articles</a></li>
+                    <li><a href="#" class="menu-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+    </body>
+</html>
