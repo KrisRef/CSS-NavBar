@@ -1,0 +1,338 @@
+:root {
+    box-sizing: border-box;
+
+    --primary: #e70146;
+    --hover-color: #fdd052;
+    --dark: #1c2022;
+    --light: #fff;
+
+    --header-bg: var(--primary);
+}
+*, *::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+    font-family: "josefin sans", "helvetica", "sans-serif";
+    font-size: 1rem; /* 1rem = 60px */
+}
+header {
+    background-color: var(--header-bg);
+    position: relative;
+    padding: 1.5em 2em;
+}
+
+.branding-logo {
+    color: var(--light);
+    font-size: cals(0.8rem + 1vw);
+    text-decoration: none;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: var(--light);
+    padding: 1em 1.5em;
+    font-size: 1.3rem;
+}
+
+/* Colors on Hover for links and labels */
+.menu > li:hover > a, 
+.submenu > li:hover > a,
+.menu > li:hover > .mobile,
+.submenu > li:hover > .submobile {
+    background-color: hsla(0, 0%, 100%, 0.05);
+    color: var(--hover-color);
+}
+
+.menu > li:hover > a,
+.menu > li:hover > .mobile {
+    background-color: hsla(0, 0%, 0%, 0.95);
+    opacity: 0.95;
+}
+
+/* Arrows */
+
+.arrow {
+    width: 0.5em;
+    height: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 0.15em solid currentColor;
+    border-bottom: 0.15em solid currentColor;
+    transform: rotate(-45deg);
+    margin-top: -0.25em;
+    transition: transform 250ms ease-in-out; /* How fast arrows return to default */
+}
+
+/* Animate arrows */
+.menu > li:hover > a > .arrow, 
+.submenu > li:hover > a > .arrow {
+    transform: rotate(225deg);
+    transition: 500ms ease-in-out;
+}
+
+
+
+
+/* MOBILE PHONE VIEW */
+
+
+
+
+
+@media only screen and (max-width: 52em) {
+
+/* Styling Menu */
+
+.menu {
+    flex-flow: column;
+    position: absolute;
+    background: var(--light);
+    top: 4.55em;
+    left: 0;
+    right: 0;
+    height: 100vh;
+/* Hide Menu before icon clicked */
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: 200ms transform cubic-bezier(0.36, 0.4, 0.42, 1.48) 100ms,
+    100ms opacity ease-in-out;
+}
+
+/* Styling Submenu */
+
+.submenu {
+    display: none;
+    background-color: var(--dark);
+    top: 0;
+    left: 0;
+    padding-left: 1.5em;
+    border-left: 0.12em dotted hsla(342, 100%, 28%, 0.95);
+}
+
+.submenu .submenu {
+    left: 0;
+    top: 0;
+}
+
+.submenu .submenu .submenu {
+    left: 0;
+    top: 0;
+}
+
+/* HIDE THE DESKTOP VIEW LINKS */
+#mobile-menu1,
+#mobile-menu2,
+#mobile-menu3 {
+    display: none;
+}
+
+/* LABEL VISIBLE & STYLES */
+.mobile {
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    padding: 1em 1.5em;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.submobile {
+    display: block;
+    text-decoration: none;
+    color: var(--light);
+    padding: 1em 1.5em;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu > li > a,
+.menu > li > .mobile {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+.submenu > li > a,
+.submenu > li > .submobile {
+    font-size: 1.5rem;
+}
+
+/*On Click Open Submenus */
+input[type=checkbox]:checked ~ .submenu {
+    display: list-item;
+    position: relative;
+}
+
+/* HAMBURGER MENU */
+
+/* Hamburger Icon */
+.hamburger {
+    width: 2em;
+    cursor: pointer; /* Shows pointer on hamburger menu, not individual lines*/
+}
+
+/* Hamburger Lines */
+
+.hamburger:after,
+.hamburger:before,
+.hamburger .midline {
+    content: '';
+    height: 0.25em;
+    margin: 5px 0;
+    display: block;
+    background: var(--light);
+    transition: all .2s ease-in-out;
+    border-radius: 3px;
+}
+
+/* Animation */
+
+.input-hamburger:checked ~ .hamburger:before {
+    transform: translateY(9px) rotate(-45deg);
+}
+
+.input-hamburger:checked ~ .hamburger:after {
+    transform: translateY(-9px) rotate(45deg);
+}
+
+.input-hamburger:checked ~ .hamburger .midline {
+    background: transparent;
+    transform: translateX(1px);
+    transition: all .1s ease-in-out;
+}
+
+/* Reveal menu */
+.input-hamburger:checked ~ .menu{
+    position: absolute;
+    opacity: 1;
+    transform: scaleY(1);
+}
+}
+
+
+
+
+/* TABLET AND DESKTOP VIEW */
+
+
+
+
+@media (min-width: 52em) {
+
+    header {
+        background-color: var(--header-bg);
+        padding-left: 1.5em;
+    }
+    
+    .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+/* Styling Submenu */
+
+    .has-dropdown {
+        position: relative;
+    }
+
+    .submenu {
+        position: absolute;
+        left: 0;
+        background-color: var(--dark);
+        white-space: nowrap;
+        padding: 1.5em 0;
+        min-width: 22em;
+        /* Hide submenus */
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top center;
+        transition: ease-in-out 0.6s; /* first time sets delay on opening submenu and second time sets delay on closing */
+    }
+
+    .submenu > li > a {
+        padding: 0.5em 1.5em;
+    }
+
+    .menu > li:hover > a,
+    .menu > li:hover > .mobile {
+        transition: 0.3s;
+    }
+
+    /* KEEP .mobile hidden */
+    .mobile,
+    .submobile {
+        display: none;
+    }
+
+    /* SHOW THE DESKTOP VIEW LINKS */
+    #mobile-menu1,
+    #mobile-menu2,
+    #mobile-menu3 {
+        display: list-item;
+    }
+
+    /* Reveal submenus */
+
+    .menu > li:hover > a + .submenu, 
+    .submenu > li:hover > a + .submenu {
+        opacity: 1;
+        transform: scaleY(1);
+        transition: 0.3s; /* Transition slide */
+    }
+
+    @media (min-width: 52em) and (max-width: 62em) {
+        .submenu .submenu {
+            left: -100%;
+        }
+        .submenu .submenu .submenu {
+            left: 100%;
+            top: 0.5em;
+        }
+        .menu li a {
+            font-size: 1rem;
+        }
+    }
+
+    @media (min-width: 62em) and (max-width: 88em) {
+        .submenu{
+            min-width: 16em;
+        }
+        .submenu .submenu {
+            left: -108%;
+        }
+        .submenu .submenu .submenu {
+            left: 100%;
+            top: 0.5em;
+        }
+    }
+
+    @media (min-width: 88em) {
+        .submenu .submenu {
+            left: -120%;
+            top: 0;
+            font-size: 1.2rem;
+        }
+        .submenu .submenu .submenu {
+            left: -91%;
+            top: 0;
+            font-size: 1.1rem;
+        }
+    }
+}
+
